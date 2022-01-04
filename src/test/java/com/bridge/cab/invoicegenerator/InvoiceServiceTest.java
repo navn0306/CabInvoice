@@ -1,5 +1,6 @@
 package com.bridge.cab.invoicegenerator;
 
+import com.bridge.cab.invoicegenerator.model.InvoiceSummary;
 import com.bridge.cab.invoicegenerator.model.Ride;
 import com.bridge.cab.invoicegenerator.service.InvoiceService;
 import org.junit.Assert;
@@ -34,7 +35,8 @@ public class InvoiceServiceTest {
         Ride[] rides = {new Ride(2.0, 5),
                 new Ride(1.0, 5),
                 new Ride(0.1, 1)};
-        double totalFare = invoiceService.calculateFare(rides);
-        Assert.assertEquals(45,totalFare,0.0);
+        InvoiceSummary expectedSummary = new InvoiceSummary(3,45);
+        InvoiceSummary summary = invoiceService.calculateFare(rides);
+        Assert.assertEquals(expectedSummary,summary);
     }
 }
