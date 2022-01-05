@@ -16,5 +16,6 @@ The Invoice Generator should now return the following as a part of the invoice.
 - Total fare.
 - Average Fare Per Ride.
 
-UseCase 4- Invoice Service 
+UseCase4- Invoice Service 
 Given a user id, the Invoice Service gets the List of rides from the RideRepository and returns the Invoice.
+

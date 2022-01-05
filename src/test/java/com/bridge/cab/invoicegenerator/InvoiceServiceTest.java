@@ -39,25 +39,24 @@ public class InvoiceServiceTest {
         Ride[] rides = {new Ride(2.0, 5),
                 new Ride(1.0, 5),
                 new Ride(0.1, 1)};
-        InvoiceSummary expectedSummary = new InvoiceSummary(3,45);
+        InvoiceSummary expectedSummary = new InvoiceSummary(3, 45);
         InvoiceSummary summary = invoiceService.calculateFare(rides);
-        Assert.assertEquals(expectedSummary,summary);
+        Assert.assertEquals(expectedSummary, summary);
     }
 
     @Test
     public void givenUserID_whenCalculateFare_shouldReturnAggregareSummery() {
-        InvoiceService invoiceService=new InvoiceService();
+        InvoiceService invoiceService = new InvoiceService();
 
-        String userName="Navneet";
-        List<Ride> rideList=new ArrayList<>();
+        String userName = "Navneet";
+        List<Ride> rideList = new ArrayList<>();
 
-        rideList.add(new Ride(1.0,5));
-        rideList.add(new Ride(2.0,5));
-        rideList.add(new Ride(0.1,1));
-        new UserAccount(userName,rideList);
-        InvoiceSummary actualSummary= invoiceService.GetInvoiceSummary(userName);
-        InvoiceSummary expectedSummery= new InvoiceSummary(3,45);
-        //  InvoiceSummery actualSummery=invoiceService.calculateFare(rides);
-        Assert.assertEquals(expectedSummery,actualSummary);
+        rideList.add(new Ride(1.0, 5));
+        rideList.add(new Ride(2.0, 5));
+        rideList.add(new Ride(0.1, 1));
+        new UserAccount(userName, rideList);
+        InvoiceSummary actualSummary = invoiceService.GetInvoiceSummary(userName);
+        InvoiceSummary expectedSummery = new InvoiceSummary(3, 45);
+        Assert.assertEquals(expectedSummery, actualSummary);
     }
 }
