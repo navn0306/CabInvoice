@@ -45,18 +45,30 @@ public class InvoiceServiceTest {
     }
 
     @Test
-    public void givenUserID_whenCalculateFare_shouldReturnAggregareSummery() {
+    public void givenUserID_whenCalculateFare_shouldReturnAverageSummery() {
         InvoiceService invoiceService = new InvoiceService();
-
         String userName = "Navneet";
         List<Ride> rideList = new ArrayList<>();
-
         rideList.add(new Ride(1.0, 5));
         rideList.add(new Ride(2.0, 5));
         rideList.add(new Ride(0.1, 1));
         new UserAccount(userName, rideList);
         InvoiceSummary actualSummary = invoiceService.GetInvoiceSummary(userName);
         InvoiceSummary expectedSummery = new InvoiceSummary(3, 45);
+        Assert.assertEquals(expectedSummery, actualSummary);
+    }
+
+    @Test
+    public void givenUserIDPremiumRides_whenCalculateFare_shouldReturnAverageSummery() {
+        InvoiceService invoiceService = new InvoiceService();
+        String userName = "Navneet";
+        List<Ride> rideList = new ArrayList<>();
+        rideList.add(new Ride(2.0, 5, "Normal"));
+        rideList.add(new Ride(1.0, 5, "Premium"));
+        rideList.add(new Ride(0.1, 1, "Premium"));
+        new UserAccount(userName, rideList);
+        InvoiceSummary actualSummary = invoiceService.GetInvoiceSummary(userName);
+        InvoiceSummary expectedSummery = new InvoiceSummary(3, 70);
         Assert.assertEquals(expectedSummery, actualSummary);
     }
 }

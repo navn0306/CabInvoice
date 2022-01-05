@@ -19,3 +19,7 @@ The Invoice Generator should now return the following as a part of the invoice.
 UseCase4- Invoice Service 
 Given a user id, the Invoice Service gets the List of rides from the RideRepository and returns the Invoice.
 
+UseCase5- Premium Rides
+The Cab Agency now supports 2 categories of rides:
+- Normal Rides : Rs. 10 per km, Rs 1 per minute, Minimum fare of Rs. 5.
+- Premium Rides : Rs. 15 per km, Rs. 2 per minute, Minimum fare of Rs. 20.
