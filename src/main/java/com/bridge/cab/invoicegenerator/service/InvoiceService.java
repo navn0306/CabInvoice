@@ -3,6 +3,8 @@ package com.bridge.cab.invoicegenerator.service;
 import com.bridge.cab.invoicegenerator.model.InvoiceSummary;
 import com.bridge.cab.invoicegenerator.model.Ride;
 
+import java.util.List;
+
 public class InvoiceService {
 
     private final double COST_PER_KM = 10.0;
@@ -20,5 +22,19 @@ public class InvoiceService {
             totalFare += calculateFare(ride.getDistance(), ride.getTime());
         }
         return new InvoiceSummary(rides.length, (int) totalFare);
+    }
+
+
+    public InvoiceSummary GetInvoiceSummary(String userName) {
+
+        List<Ride> list = UserAccount.userMap.get(userName);
+        double totalFare = 0.0;
+        int rideCount = 0;
+        for (Ride ride : list) {
+            totalFare += calculateFare(ride.getDistance(), ride.getTime());
+            rideCount++;
+        }
+
+        return new InvoiceSummary(rideCount, (int) totalFare);
     }
 }
